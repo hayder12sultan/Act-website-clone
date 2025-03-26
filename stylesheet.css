@@ -43,3 +43,66 @@
     margin-left: 10px;
     margin-top: -5px;
 }
+.card-wrapper {
+  perspective: 1000px; /* Defines how far the card is from the viewer */
+}
+
+/* Card container setup */
+.c-card {
+  width: 300px;
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d; /* Ensures children are displayed in 3D space */
+  transition: transform 0.5s ease-in-out; /* Smooth transition with ease-in-out for smooth start and end */
+}
+
+.c-card:hover {
+  transform: rotateY(180deg); /* Flip the card when hovered */
+}
+
+/* Card front and back styles */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  backface-visibility: hidden; /* Hide the back face when rotated */
+  overflow: hidden; /* Ensure the overlay doesn't overflow */
+}
+
+/* Red overlay for background images */
+.card-front::before, .card-back::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(243, 17, 104, 0.74); /* Red overlay with 50% opacity */
+  z-index: 1; /* Ensure the overlay is above the background image */
+}
+
+.card-front .card-body, .card-back .card-body {
+  position: relative;
+  z-index: 2; /* Ensure the text is above the overlay */
+}
+
+.card-front {
+  background-color: #f4f4f4; /* Front side background */
+  background-image: url(https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80);
+  background-size: cover;
+  transform: rotateY(0deg); /* Ensure the front side is facing forward */
+}
+
+.card-back {
+  background-color: #e0e0e0; /* Back side background */
+  background-image: url(https://images.unsplash.com/photo-1498889444388-e67ea62c464b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1365&q=80);
+  background-size: cover;
+  transform: rotateY(180deg); /* Initially rotate the back side */
+}
