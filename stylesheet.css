@@ -24,3 +24,22 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
   }
+  .navbar .dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+/* Ensure nested dropdowns work on hover */
+.navbar .dropdown-menu .dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+/* Prevent parent dropdowns from opening when hovering over nested dropdowns */
+.navbar .dropdown-menu .dropdown > .dropdown-menu {
+    display: none; /* Hide nested dropdowns by default */
+}
+
+/* Add some spacing for nested dropdowns */
+.navbar .dropdown-menu .dropdown-menu {
+    margin-left: 10px;
+    margin-top: -5px;
+}
